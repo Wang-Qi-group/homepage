@@ -16,10 +16,10 @@ export default ({
 }) => {
   // ...apply enhancements to the app
   Vue.use(iView, { locale })
-  Vue.use(vueAnimate)
+  // Vue.use(vueAnimate)
   Vue.component('ring', Ring)
-  Vue.component('abstract-hue', abstractHue)
-  Vue.component('abstract-saturation', abstractSaturation)
-  Vue.component('ring-blue', ringBlue)
-  Vue.component('ring-green', ringGreen)
+  // Vue.component('abstract-hue', abstractHue)
+  // Vue.component('abstract-saturation', abstractSaturation)
+  // Vue.component('ring-blue', ringBlue)
+  // Vue.component('ring-green', ringGreen)
 }

@@ -210,7 +210,7 @@
                 }
                 this.ring.style.width = this.ringSize.width + 'px'
                 this.ring.style.height = this.ringSize.height + 'px'
-                this.ring.style.marginTop = this.ringSize.marginTop + 'px'
+                this.ring.style.marginTop = this.ringSize.marginTop  + 'px'
                 this.ring.style.marginLeft = this.ringSize.marginLeft + 'px'
             }
         }
