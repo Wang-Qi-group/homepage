@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@deveodk/vue-animate": "^1.0.1",
     "iview": "^3.5.0-rc.1",
     "vuepress": "^1.0.3"
   },
