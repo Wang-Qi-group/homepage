@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "iview": "^3.5.0-rc.1",
+    "vuepress": "^1.0.3"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "devDependencies": {}
+}
