@@ -9,7 +9,10 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "predeploy": "yarn docs:build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "bd": "npm run build && gh-pages -d docs/.vuepress/dist"
   },
   "devDependencies": {
     "element-theme-chalk": "^2.12.0",
