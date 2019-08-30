@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "bd": "npm run build && gh-pages -d docs/.vuepress/dist"
+    "deploy": "npm run build && gh-pages -d docs/.vuepress/dist"
   },
   "dependencies": {
     "element-ui": "^2.12.0"
