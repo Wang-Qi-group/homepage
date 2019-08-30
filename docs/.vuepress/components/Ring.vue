@@ -14,7 +14,6 @@
         margin-top: -300px;
         margin-left: -325px;
     }
-
     .ring::after,
     .ring::before {
         -webkit-transform-origin: center center;
@@ -30,7 +29,6 @@
         border-radius: 100%;
         content: '';
     }
-
     .ring::after {
         -webkit-animation: clockwise 10s linear infinite;
         -moz-animation: clockwise 10s linear infinite;
@@ -38,14 +36,12 @@
         /* box-shadow: inset 0 33.33333px 0 rgba(0, 228, 173, 0.7), inset 33.33333px 0 0 rgba(49, 255, 206, 0.7), inset -33.33333px 0 rgba(151, 255, 230, 0.7), inset -33.33333px 0 0 rgba(228, 255, 248, 0.7); */
         box-shadow: inset 0 33.33333px 0 rgba(37,167,154,0.9), inset 33.33333px 0 0 rgba(0, 228, 173, 0.7), inset -33.33333px 0 #2bb7b3, inset -33.33333px 0 0 rgba(228, 255, 248, 0.7);
     }
-
     .ring::before {
         -webkit-animation: counterclockwise 10s linear infinite;
         -moz-animation: counterclockwise 10s linear infinite;
         animation: counterclockwise 10s linear infinite;
         box-shadow: inset 0 33.33333px 0 #ff9f33, inset 33.33333px 0 0 #ef6c00, inset -33.33333px 0 #bc3a00, inset -33.33333px 0 0 rgba(175, 187, 255, 0.7);
     }
-
     @-webkit-keyframes clockwise {
         0% {
             -webkit-transform: rotateZ(0deg) scaleX(1) scaleY(1);
@@ -57,7 +53,6 @@
             -webkit-transform: rotateZ(360deg) scaleX(1) scaleY(1);
         }
     }
-
     @-moz-keyframes clockwise {
         0% {
             -moz-transform: rotateZ(0deg) scaleX(1) scaleY(1);
@@ -69,7 +64,6 @@
             -moz-transform: rotateZ(360deg) scaleX(1) scaleY(1);
         }
     }
-
     @keyframes clockwise {
         0% {
             -webkit-transform: rotateZ(0deg) scaleX(1) scaleY(1);
@@ -93,7 +87,6 @@
             transform: rotateZ(360deg) scaleX(1) scaleY(1);
         }
     }
-
     @-webkit-keyframes counterclockwise {
         0% {
             -webkit-transform: rotateZ(0deg) scaleX(1) scaleY(1);
@@ -105,7 +98,6 @@
             -webkit-transform: rotateZ(-360deg) scaleX(1) scaleY(1);
         }
     }
-
     @-moz-keyframes counterclockwise {
         0% {
             -moz-transform: rotateZ(0deg) scaleX(1) scaleY(1);
@@ -117,7 +109,6 @@
             -moz-transform: rotateZ(-360deg) scaleX(1) scaleY(1);
         }
     }
-
     @keyframes counterclockwise {
         0% {
             -webkit-transform: rotateZ(0deg) scaleX(1) scaleY(1);
@@ -141,7 +132,6 @@
             transform: rotateZ(-360deg) scaleX(1) scaleY(1);
         }
     }
-
 </style>
 <script>
     import _ from 'lodash'

@@ -1,4 +1,3 @@
-
 <template>
 <div class="layout">
   <div :height="fullHeight + 'px'" class="header">
@@ -238,7 +237,6 @@ export default {
         }, 400)
       }
     }
-
   },
   mounted() {
     const that = this
@@ -250,7 +248,6 @@ export default {
       })()
     }
     this.isMounted = true
-
     // 监听dom渲染完成
     this.$nextTick(function() {
       // 这里fixedHeaderRoot是吸顶元素的ID
@@ -278,7 +275,6 @@ export default {
       this.headerFixed = scrollTop > (this.offsetTop);
       // this.headerFixed = this.offsetTop > document.documentElement.clientHeight
     },
-
   }
 };
 </script>
@@ -290,11 +286,9 @@ export default {
   /* border-radius: 4px; */
   overflow: hidden;
 }
-
 .header {
   background: #212121;
 }
-
 .layout-nav {
   width: 415px;
   margin: 0 auto;
@@ -302,11 +296,9 @@ export default {
   /* text-align: center; */
   /* margin-right: 20px; */
 }
-
 .layout-footer-center {
   text-align: center;
 }
-
 .isFixed {
   position: fixed;
   top: 0px;
@@ -314,16 +306,13 @@ export default {
   right: 0px;
   z-index: 4;
 }
-
 .home-section:nth-of-type(2n+1) {
   background-color: rgb(247, 247, 247);
 }
-
 .home-section {
   background-color: rgb(255, 255, 255);
   padding: 110px 0 110px 0;
 }
-
 .el-carousel__item h3 {
   color: #475669;
   font-size: 14px;
@@ -331,15 +320,12 @@ export default {
   line-height: 150px;
   margin: 0;
 }
-
 .el-carousel__item:nth-child(2n) {
   background-color: #99bfb2;
 }
-
 .el-carousel__item:nth-child(2n+1) {
   background-color: #b5d3c8;
 }
-
 ul>li {
   margin-bottom: 20px
 }

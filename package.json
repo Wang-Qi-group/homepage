@@ -1,22 +1,14 @@
 {
-  "dependencies": {
-    "@deveodk/vue-animate": "^1.0.1",
-    "element-theme": "^2.0.1",
-    "element-ui": "^2.12.0",
-    "vuepress": "^1.0.3"
-  },
+  "homepage": "https://github.com/Wang-Qi-group/homepage",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "predeploy": "yarn docs:build",
-    "deploy": "gh-pages -d dist",
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
     "bd": "npm run build && gh-pages -d docs/.vuepress/dist"
   },
-  "devDependencies": {
-    "element-theme-chalk": "^2.12.0",
-    "gh-pages": "^2.1.1"
+  "dependencies": {
+    "element-ui": "^2.12.0"
   },
-  "homepage": "https://github.com/Wang-Qi-group/homepage"
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
+  }
 }
