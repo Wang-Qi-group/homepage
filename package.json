@@ -1,12 +1,19 @@
 {
   "dependencies": {
     "@deveodk/vue-animate": "^1.0.1",
-    "iview": "^3.5.0-rc.1",
+    "element-theme": "^2.0.1",
+    "element-ui": "^2.12.0",
     "vuepress": "^1.0.3"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "predeploy": "yarn docs:build",
+    "deploy": "gh-pages -d dist"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "element-theme-chalk": "^2.12.0",
+    "gh-pages": "^2.1.1"
+  },
+  "homepage": "https://github.com/Wang-Qi-group/homepage"
 }

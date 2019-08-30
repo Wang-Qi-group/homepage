@@ -1,107 +1,218 @@
 
 <template>
 <div class="layout">
-  <Layout>
+  <div :height="fullHeight + 'px'" class="header">
+    <div :style="{height:(fullHeight*0.85)+'px'}">
+      <div style="height: 70%; position: relative">
+        <ring v-if="isMounted == true"></ring>
+      </div>
+      <div style="height: 30%">
+        <div style="color: #fff; text-align: center; font-size: 48pt">Crypto Lab</div>
+        <div style="color: #666; text-align: center; font-size: 20pt">SUSTech</div>
+      </div>
+    </div>
+    <div style="background-color: #212121" id="menu" :class="headerFixed?'isFixed':''">
+      <el-menu style="border-bottom: none;" class="layout-nav" mode="horizontal" background-color="#212121" text-color="#fff" active-text-color="#ef6c00">
+        <el-menu-item index="1"> News
+        </el-menu-item>
+        <el-menu-item index="2"> About
+        </el-menu-item>
+        <el-menu-item index="3"> Research
+        </el-menu-item>
+        <el-menu-item index="4"> People
+        </el-menu-item>
+        <el-menu-item index="5"> Contact
+        </el-menu-item>
+      </el-menu>
+    </div>
+    <div :style="{height:(fullHeight*0.15 - 60)+'px'}"></div>
+  </div>
 
-    <Header class="header">
-      <div :style="{height:(fullHeight*0.85)+'px'}">
-        <!-- <abstract-hue></abstract-hue> -->
-        <!-- <abstract-saturation></abstract-saturation> -->
-        <!-- <ring-blue></ring-blue> -->
-        <!-- <ring-green></ring-green> -->
-        <div style="height: 70%; position: relative">
-          <ring></ring>
+  <div id="news" class="home-section">
+    <el-row>
+      <el-col :span="8" :offset="8">
+        <h2 style="font-size: 48px; text-align: center">News</h2>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="16" :offset="4">
+        <div class="block">
+          <el-carousel height="300px">
+            <el-carousel-item v-for="item in 4" :key="item">
+              <h3 class="small">{{ item }}</h3>
+            </el-carousel-item>
+          </el-carousel>
         </div>
-        <div style="height: 30%">
-          <div style="color: #fff; text-align: center; font-size: 48pt">Crypto Lab</div>
-          <div style="color: #666; text-align: center; font-size: 20pt">SUSTech</div>
+      </el-col>
 
+      <el-col :span="8" :offset="8">
+        <ul style="font-size: 18px; line-height: 2;" type="none">
+          <li>
+            <el-link href="#" target="_blank">
+
+              2019-08-08 南科大计算机系学子在国际软件测试大赛中连续斩获多个奖项
+            </el-link>
+          </li>
+          <li>
+            <el-link href="#" target="_blank">2019-07-17 南方科技大学计算机系2015级毕业晚宴圆满结束
+            </el-link>
+          </li>
+          <li>
+            <el-link href="#" target="_blank">2018-09-10 Happy Teachers Day! -- Blessings from Students</el-link>
+          </li>
+        </ul>
+      </el-col>
+
+    </el-row>
+  </div>
+
+  <div id="about" class="home-section">
+    <el-row>
+      <el-col :span="8" :offset="8">
+        <h2 style="font-size: 48px; text-align: center">About</h2>
+      </el-col>
+    </el-row>
+    <el-row>
+
+      <el-col :span="12" :offset="6">
+        I am Yi LIU, a Ph.D. student in HKU. My research interests include Applied Cryptography and Security, in particular, blockchain-based protocols and applications, privacy preserving, etc.
+      </el-col>
+
+    </el-row>
+  </div>
+
+  <div id="research" class="home-section">
+    <el-row>
+      <el-col :span="8" :offset="8">
+        <h2 style="font-size: 48px; text-align: center">Research</h2>
+      </el-col>
+    </el-row>
+    <el-row>
+
+      <el-col :span="12" :offset="6">
+        <ul style="font-size: 18px; line-height: 2;">
+          <li> [J18] (with H. Yan, Z. Zhou, J. Weng, J. Wen and T. Helleseth) &quot;Differential spectrum of Kasami power permutations over odd characteristic finite fields,&quot;
+            <i>IEEE Transactions on Information Theory, </i> to appear, DOI10.1109/TIT.2019.2910070.
+
+          </li>
+
+          <li> [J17] (with J. Michel) &quot;Almost designs and their links with balanced incomplete block designs,&quot; <i>Designs Codes and Cryptography, </i> to appear, https://doi.org/10.1007/s10623-018-00596-4.
+
+          </li>
+
+          <li> [J16] (with J. Michel) &quot;Almost difference sets in nonabelian groups,&quot;
+            <iDesigns Codes and Cryptography</i><i>Designs Codes and Cryptography</i>, vo
+              <span lang="en-us">l. 87, pp. 1243-1251, 2019</span>.
+
+          </li>
+
+          <li> [J15] (with J. Michel) &quot;Some new balanced and almost balanced quaternary sequences with low autocorrelation,&quot; <i>Cryptography and Communications</i>, vol. 11, pp. 191-206, 2019.
+
+          </li>
+
+        </ul>
+      </el-col>
+
+    </el-row>
+  </div>
+
+  <div id="people" class="home-section">
+    <el-row>
+      <el-col :span="8" :offset="8">
+        <h2 style="font-size: 48px; text-align: center">People</h2>
+      </el-col>
+
+    </el-row>
+
+    <el-row :gutter="20">
+      <el-col :span="4" :offset="4">
+        <el-card :body-style="{ padding: '0px' }">
+          <div style="text-align: center; margin: 10px">
+            <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+          </div>
+
+          <div style="padding: 14px;">
+            <span>好吃的汉堡</span>
+            <div class="bottom clearfix">
+              <el-button type="text" class="button">操作按钮</el-button>
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="4">
+        <el-card :body-style="{ padding: '0px' }">
+          <div style="text-align: center; margin: 10px">
+            <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+          </div>
+
+          <div style="padding: 14px;">
+            <span>好吃的汉堡</span>
+            <div class="bottom clearfix">
+              <el-button type="text" class="button">操作按钮</el-button>
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="4">
+        <el-card :body-style="{ padding: '0px' }">
+          <div style="text-align: center; margin: 10px">
+            <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+          </div>
+
+          <div style="padding: 14px;">
+            <span>好吃的汉堡</span>
+            <div class="bottom clearfix">
+              <el-button type="text" class="button">操作按钮</el-button>
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="4">
+        <el-card :body-style="{ padding: '0px' }">
+          <div style="text-align: center; margin: 10px">
+            <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+          </div>
+
+          <div style="padding: 14px;">
+            <span>好吃的汉堡</span>
+            <div class="bottom clearfix">
+              <el-button type="text" class="button">操作按钮</el-button>
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+  </div>
+
+  <div id="contact" class="home-section">
+    <el-row>
+      <el-col :span="8" :offset="8">
+        <h2 style="font-size: 48px; text-align: center">Contact</h2>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20">
+
+      <el-col :span="8" :offset="4">
+        <div style="text-algin: center">
+          <iframe width="504" height="425" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://j.map.baidu.com/s/GspIFb"></iframe>
         </div>
-      </div>
-      <Affix @on-change="changeStyle">
-        <Menu mode="horizontal" :theme="isTop? 'dark':'primary'" active-name="1">
-          <!-- <div class="layout-logo">Crypto Lab</div> -->
-          <div class="layout-nav">
-            <MenuItem name="1"> News
-            </MenuItem>
-            <MenuItem name="2"> Research
-            </MenuItem>
-            <MenuItem name="3"> People
-            </MenuItem>
-            <MenuItem name="4"> Publication
-            </MenuItem>
-            <MenuItem name="5"> Contact
-            </MenuItem>
-          </div>
-        </Menu>
-      </Affix>
-      <div :style="{height:(fullHeight*0.15 - 60)+'px'}"></div>
-    </Header>
-    <Content>
-      <div id="news">
-        <Row>
-          <Col span="24" style="padding: 50px; text-align: center;">
-          <h2>News</h2>
-          </Col>
-          <Col span="12" offset="6">
-          <div>
-            <Card>
-              <p slot="title">Happy Teachers Day!</p>
-              
-              <p>
+      </el-col>
+      <el-col :span="4">
+        <div style="text-algin: center">
+          
+        </div>
+      </el-col>
 
-                柳枫：祝老师教师节快乐！小公主健康成长！</p>
+    </el-row>
+  </div>
 
-              <p>刘逸：这几年，我在老师您身上学到了太多东西，不仅是学习和生活，还有人生态度，您是我人生中最重要的老师，真的很幸运能遇到您。老师教师节快乐，我们在接下来的时间里一起加油！</p>
+  <div id="About">
 
-              <p>温伟煌：非常感谢老师过去四年的指导，遇上老师是我在南科大发生的最幸运的事之一，希望老师今后的每一年也都精彩幸福！</p>
+  </div>
+  <div style="height: 1200px; ">
 
-              <p>王佳慧：祝老师教师节快乐！很开心在新的阶段来到老师这里攻读研究生，同时感谢老师这段时间对我的照顾。 期待在接下来的日子里，能够在老师的帮助下，逐渐朝着自己理想的方向前进，最后祝老师工作顺利，家庭幸福美满。</p>
+  </div>
 
-              <p>王戈扬：王老师教师节快乐！我不是很擅长写作或表达感情，总之感谢老师三年以来对我的指导，建议和帮助，这些对我影响巨大。如果我将来也有机会指导学生的话，我一定以您为标准！</p>
-
-              <p>毛玉莲：非常幸运能遇到王老师这样好的老师，非常感谢王老师在大学三年里的谆谆教诲，从学习态度到人生态度的引导。祝王老师工作顺利，家庭幸福美满！</p>
-
-              <p>倪子恒：祝王老师教师节快乐！非常感谢老师在我本科四年间对我的帮助，祝老师科研硕果累累！
-              </p>
-            </Card>
-          </div>
-          </Col>
-        </Row>
-      </div>
-
-      <div id="research">
-        <Row>
-          <Col span="24" style="padding: 50px; text-align: center;">
-          <h2>Research</h2>
-          </Col>
-          <Col span="4" offset="6" style="text-align: center">
-          <i-circle :size="150" :percent="100">
-            <span class="demo-Circle-inner" style="font-size:20px">Code Design</span>
-          </i-circle>
-          </Col>
-          <Col span="4" style="text-align: center">
-          <i-circle :size="200" :percent="100" stroke-color="#5cb85c">
-            <span class="demo-Circle-inner" style="font-size:20px">Cryptography</span>
-          </i-circle>
-          </Col>
-          <Col span="4" style="text-align: center">
-          <i-circle :size="150" :percent="100" stroke-color="#ff5500">
-            <span class="demo-Circle-inner">
-            <span class="demo-Circle-inner" style="font-size:20px">Machine Learning</span>
-            </span>
-          </i-circle>
-          </Col>
-        </Row>
-      </div>
-      <div style="height: 1200px; ">
-
-      </div>
-
-    </Content>
-
-    <!-- <Footer class="layout-footer-center">2011-2016 &copy; TalkingData</Footer> -->
-  </Layout>
 </div>
 </template>
 
@@ -111,8 +222,9 @@ export default {
     return {
       isTop: true,
       value2: 0,
-      fullHeight: document.documentElement.clientHeight, // 屏幕高度
-
+      fullHeight: 0, // 屏幕高度
+      isMounted: false,
+      headerFixed: 0
     };
   },
   watch: {
@@ -130,18 +242,43 @@ export default {
   },
   mounted() {
     const that = this
+    this.fullHeight = document.documentElement.clientHeight
     window.onresize = () => {
       return (() => {
         window.fullHeight = document.documentElement.clientHeight
         that.fullHeight = window.fullHeight
       })()
     }
+    this.isMounted = true
+
+    // 监听dom渲染完成
+    this.$nextTick(function() {
+      // 这里fixedHeaderRoot是吸顶元素的ID
+      let header = document.getElementById("menu");
+      // 这里要得到top的距离和元素自身的高度
+      this.offsetTop = header.offsetTop;
+      this.offsetHeight = header.offsetHeight;
+      console.log("offsetTop:" + this.offsetTop + "," + this.offsetHeight);
+    });
+    // handleScroll为页面滚动的监听回调
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
   },
   computed: {},
   methods: {
     changeStyle(status) {
       this.isTop = !this.isTop
-    }
+    },
+    handleScroll() {
+      // 得到页面滚动的距离
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      // 判断页面滚动的距离是否大于吸顶元素的位置
+      this.headerFixed = scrollTop > (this.offsetTop);
+      // this.headerFixed = this.offsetTop > document.documentElement.clientHeight
+    },
+
   }
 };
 </script>
@@ -159,14 +296,51 @@ export default {
 }
 
 .layout-nav {
-  width: 500px;
+  width: 415px;
   margin: 0 auto;
-  padding: 0 25px;
-  text-align: center
+  /* padding: 0 42px; */
+  /* text-align: center; */
   /* margin-right: 20px; */
 }
 
 .layout-footer-center {
   text-align: center;
+}
+
+.isFixed {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 4;
+}
+
+.home-section:nth-of-type(2n+1) {
+  background-color: rgb(247, 247, 247);
+}
+
+.home-section {
+  background-color: rgb(255, 255, 255);
+  padding: 110px 0 110px 0;
+}
+
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 150px;
+  margin: 0;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99bfb2;
+}
+
+.el-carousel__item:nth-child(2n+1) {
+  background-color: #b5d3c8;
+}
+
+ul>li {
+  margin-bottom: 20px
 }
 </style>

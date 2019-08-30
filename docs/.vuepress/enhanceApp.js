@@ -1,12 +1,8 @@
-// import Vue from 'vue'
-import iView from 'iview';
-// import 'iview/dist/styles/iview.css';
-import '../../my-theme/dist/iview.css'
-import locale from 'iview/dist/locale/en-US';
-// import vueAnimate from '@deveodk/vue-animate'
-// You need a specific loader for CSS files like https://github.com/webpack/css-loader
-// import '@deveodk/vue-animate/dist/@deveodk/vue-animate.css'
+import ElementUI from 'element-ui';
+// import 'element-ui/lib/theme-chalk/index.css';
+import '../../theme/index.css'
 import Ring from './components/Ring.vue'
+import locale from 'element-ui/lib/locale/lang/en'
 
 export default ({
   Vue, // the version of Vue being used in the VuePress app
@@ -15,7 +11,7 @@ export default ({
   siteData // site metadata
 }) => {
   // ...apply enhancements to the app
-  Vue.use(iView, { locale })
+  Vue.use(ElementUI, { locale })
   // Vue.use(vueAnimate)
   Vue.component('ring', Ring)
   // Vue.component('abstract-hue', abstractHue)
