@@ -10,31 +10,63 @@
         <div style="color: #666; text-align: center; font-size: 20pt">SUSTech</div>
       </div>
     </div>
-    <div style="background-color: #212121" id="menu" :class="headerFixed?'isFixed':''">
-      <el-menu style="border-bottom: none;" class="layout-nav" mode="horizontal" background-color="#212121" text-color="#fff" active-text-color="#ef6c00">
-        <el-menu-item index="1"> News
-        </el-menu-item>
-        <el-menu-item index="2"> About
-        </el-menu-item>
-        <el-menu-item index="3"> Research
-        </el-menu-item>
-        <el-menu-item index="4"> People
-        </el-menu-item>
-        <el-menu-item index="5"> Contact
-        </el-menu-item>
-      </el-menu>
-    </div>
+    <el-row>
+      <el-col class="hidden-sm-and-down">
+        <div style="background-color: #212121" id="menu" :class="headerFixed?'isFixed':''">
+          <el-menu style="border-bottom: none;" class="layout-nav" mode="horizontal" background-color="#212121" text-color="#fff" active-text-color="#ef6c00">
+            <el-menu-item index="1" @click="toSection('about')"> About
+            </el-menu-item>
+            <el-menu-item index="2" @click="toSection('news')"> News
+            </el-menu-item>
+            <el-menu-item index="3" @click="toSection('research')"> Research
+            </el-menu-item>
+            <el-menu-item index="4" @click="toSection('people')"> People
+            </el-menu-item>
+            <el-menu-item index="5" @click="toSection('contact')"> Contact
+            </el-menu-item>
+          </el-menu>
+        </div>
+      </el-col>
+
+    </el-row>
+
+    <div class="hidden-sm-and-down" v-if="headerFixed" style="height:60px"></div>
     <div :style="{height:(fullHeight*0.15 - 60)+'px'}"></div>
+  </div>
+
+  <div id="about" class="home-section">
+    <el-row>
+      <el-col :span="16" :offset="4">
+        <h2 style="font-size: 48px; text-align: center">About</h2>
+      </el-col>
+    </el-row>
+
+    <el-row style="padding: 15px">
+      <el-col :lg="6" :xl="6">
+        <div>&nbsp</div>
+      </el-col>
+
+      <el-col :lg="12" :sm="24" :xs="24">
+        I am Yi LIU, a Ph.D. student in HKU. My research interests include Applied Cryptography and Security, in particular, blockchain-based protocols and applications, privacy preserving, etc.
+      </el-col>
+      <el-col :lg="6" :xl="6">
+        <div>&nbsp</div>
+      </el-col>
+
+    </el-row>
   </div>
 
   <div id="news" class="home-section">
     <el-row>
-      <el-col :span="8" :offset="8">
+      <el-col :span="16" :offset="4">
         <h2 style="font-size: 48px; text-align: center">News</h2>
       </el-col>
     </el-row>
     <el-row>
-      <el-col :span="16" :offset="4">
+      <el-col :lg="4" :sm="2" :xs="0">
+        <div>&nbsp</div>
+      </el-col>
+      <el-col :lg="16" :sm="20" :xs="24">
         <div class="block">
           <el-carousel height="300px">
             <el-carousel-item v-for="item in 4" :key="item">
@@ -43,9 +75,16 @@
           </el-carousel>
         </div>
       </el-col>
-
-      <el-col :span="8" :offset="8">
-        <ul style="font-size: 18px; line-height: 2;" type="none">
+      <el-col :lg="4" :sm="2" :xs="0">
+        <div>&nbsp</div>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :lg="4" :sm="2" :xs="1">
+        <div>&nbsp</div>
+      </el-col>
+      <el-col :lg="16" :sm="20" :xs="22">
+        <ul style="font-size: 18px; line-height: 2;" type="circle">
           <li>
             <el-link href="#" target="_blank">
 
@@ -61,34 +100,27 @@
           </li>
         </ul>
       </el-col>
-
-    </el-row>
-  </div>
-
-  <div id="about" class="home-section">
-    <el-row>
-      <el-col :span="8" :offset="8">
-        <h2 style="font-size: 48px; text-align: center">About</h2>
-      </el-col>
-    </el-row>
-    <el-row>
-
-      <el-col :span="12" :offset="6">
-        I am Yi LIU, a Ph.D. student in HKU. My research interests include Applied Cryptography and Security, in particular, blockchain-based protocols and applications, privacy preserving, etc.
+      <el-col :lg="4" :sm="2" :xs="1">
+        <div>&nbsp</div>
       </el-col>
 
     </el-row>
   </div>
+
+
 
   <div id="research" class="home-section">
     <el-row>
-      <el-col :span="8" :offset="8">
+      <el-col :span="16" :offset="4">
         <h2 style="font-size: 48px; text-align: center">Research</h2>
       </el-col>
     </el-row>
-    <el-row>
 
-      <el-col :span="12" :offset="6">
+    <el-row>
+      <el-col :lg="4" :sm="2" :xs="1">
+        <div>&nbsp</div>
+      </el-col>
+      <el-col :lg="16" :sm="20" :xs="22">
         <ul style="font-size: 18px; line-height: 2;">
           <li> [J18] (with H. Yan, Z. Zhou, J. Weng, J. Wen and T. Helleseth) &quot;Differential spectrum of Kasami power permutations over odd characteristic finite fields,&quot;
             <i>IEEE Transactions on Information Theory, </i> to appear, DOI10.1109/TIT.2019.2910070.
@@ -111,21 +143,27 @@
 
         </ul>
       </el-col>
+      <el-col :lg="4" :sm="2" :xs="1">
+        <div>&nbsp</div>
+      </el-col>
 
     </el-row>
   </div>
 
   <div id="people" class="home-section">
     <el-row>
-      <el-col :span="8" :offset="8">
+      <el-col :span="16" :offset="4">
         <h2 style="font-size: 48px; text-align: center">People</h2>
       </el-col>
 
     </el-row>
 
-    <el-row :gutter="20">
-      <el-col :span="4" :offset="4">
-        <el-card :body-style="{ padding: '0px' }">
+    <el-row :gutter="0">
+      <el-col :lg="4" :sm="2" :xs="0">
+        <div>&nbsp</div>
+      </el-col>
+      <el-col :lg="4" :sm="24" :xs="24">
+        <el-card :body-style="{ padding: '0px' }" style="margin: 10px" shadow="hover">
           <div style="text-align: center; margin: 10px">
             <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
           </div>
@@ -138,8 +176,8 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :span="4">
-        <el-card :body-style="{ padding: '0px' }">
+      <el-col :lg="4" :sm="24" :xs="24">
+        <el-card :body-style="{ padding: '0px' }" style="margin: 10px" shadow="hover">
           <div style="text-align: center; margin: 10px">
             <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
           </div>
@@ -152,8 +190,8 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :span="4">
-        <el-card :body-style="{ padding: '0px' }">
+      <el-col :lg="4" :sm="24" :xs="24">
+        <el-card :body-style="{ padding: '0px' }" style="margin: 10px" shadow="hover">
           <div style="text-align: center; margin: 10px">
             <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
           </div>
@@ -166,8 +204,8 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :span="4">
-        <el-card :body-style="{ padding: '0px' }">
+      <el-col :lg="4" :sm="24" :xs="24">
+        <el-card :body-style="{ padding: '0px' }" style="margin: 10px" shadow="hover">
           <div style="text-align: center; margin: 10px">
             <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
           </div>
@@ -185,7 +223,7 @@
 
   <div id="contact" class="home-section">
     <el-row>
-      <el-col :span="8" :offset="8">
+      <el-col :span="16" :offset="4">
         <h2 style="font-size: 48px; text-align: center">Contact</h2>
       </el-col>
     </el-row>
@@ -193,12 +231,12 @@
 
       <el-col :span="8" :offset="4">
         <div style="text-algin: center">
-          <iframe width="504" height="425" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://j.map.baidu.com/s/GspIFb"></iframe>
+
         </div>
       </el-col>
       <el-col :span="4">
         <div style="text-algin: center">
-          
+
         </div>
       </el-col>
 
@@ -212,6 +250,7 @@
 
   </div>
 
+
 </div>
 </template>
 
@@ -223,7 +262,7 @@ export default {
       value2: 0,
       fullHeight: 0, // 屏幕高度
       isMounted: false,
-      headerFixed: 0
+      headerFixed: false
     };
   },
   watch: {
@@ -251,29 +290,53 @@ export default {
     // 监听dom渲染完成
     this.$nextTick(function() {
       // 这里fixedHeaderRoot是吸顶元素的ID
-      let header = document.getElementById("menu");
+      let header = document.getElementById("menu")
       // 这里要得到top的距离和元素自身的高度
-      this.offsetTop = header.offsetTop;
-      this.offsetHeight = header.offsetHeight;
-      console.log("offsetTop:" + this.offsetTop + "," + this.offsetHeight);
+      this.offsetTop = header.offsetTop
+      this.offsetHeight = header.offsetHeight
+      // console.log("offsetTop:" + this.offsetTop + "," + this.offsetHeight);
     });
     // handleScroll为页面滚动的监听回调
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  created() {
+
   },
   destroyed() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll)
   },
   computed: {},
   methods: {
+    toSection(id) {
+      document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+      })
+    },
     changeStyle(status) {
       this.isTop = !this.isTop
     },
     handleScroll() {
       // 得到页面滚动的距离
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
       // 判断页面滚动的距离是否大于吸顶元素的位置
-      this.headerFixed = scrollTop > (this.offsetTop);
-      // this.headerFixed = this.offsetTop > document.documentElement.clientHeight
+
+      let header = document.getElementById("menu")
+      // 这里要得到top的距离和元素自身的高度
+      this.offsetTop = header.offsetTop
+
+
+
+      // this.headerFixed = scrollTop > (this.offsetTop);
+      // console.log(scrollTop)
+      // console.log('this' + this.fullHeight * 0.85)
+      this.headerFixed = scrollTop > this.fullHeight * 0.85 + 60
+    },
+    handlerClick(link) {
+      if (/^http/.test(link)) {
+        window.open(link)
+      } else {
+        this.$router.push(link)
+      }
     },
   }
 };
@@ -286,9 +349,11 @@ export default {
   /* border-radius: 4px; */
   overflow: hidden;
 }
+
 .header {
   background: #212121;
 }
+
 .layout-nav {
   width: 415px;
   margin: 0 auto;
@@ -296,23 +361,29 @@ export default {
   /* text-align: center; */
   /* margin-right: 20px; */
 }
+
 .layout-footer-center {
   text-align: center;
 }
+
 .isFixed {
   position: fixed;
   top: 0px;
   left: 0px;
   right: 0px;
+  bottom: auto;
   z-index: 4;
 }
+
 .home-section:nth-of-type(2n+1) {
   background-color: rgb(247, 247, 247);
 }
+
 .home-section {
   background-color: rgb(255, 255, 255);
-  padding: 110px 0 110px 0;
+  padding: 40px 0 110px 0;
 }
+
 .el-carousel__item h3 {
   color: #475669;
   font-size: 14px;
@@ -320,12 +391,15 @@ export default {
   line-height: 150px;
   margin: 0;
 }
+
 .el-carousel__item:nth-child(2n) {
   background-color: #99bfb2;
 }
+
 .el-carousel__item:nth-child(2n+1) {
   background-color: #b5d3c8;
 }
+
 ul>li {
   margin-bottom: 20px
 }
