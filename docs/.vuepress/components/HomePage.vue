@@ -31,6 +31,7 @@
     </el-row>
 
     <div class="hidden-sm-and-down" v-if="headerFixed" style="height:60px"></div>
+    <div class="hidden-md-and-up" style="height:60px"></div>
     <div :style="{height:(fullHeight*0.15 - 60)+'px'}"></div>
   </div>
 
