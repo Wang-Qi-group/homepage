@@ -6,14 +6,14 @@
         <ring v-if="isMounted == true"></ring>
       </div>
       <div style="height: 30%">
-        <div style="color: #fff; text-align: center; font-size: 48pt">Crypto Lab</div>
-        <div style="color: #666; text-align: center; font-size: 20pt">SUSTech</div>
+        <div style="color: #fff; text-align: center; font-size: 4.8em">Crypto Lab</div>
+        <div style="color: #666; text-align: center; font-size: 2em">SUSTech</div>
       </div>
     </div>
     <el-row>
       <el-col class="hidden-sm-and-down">
-        <div style="background-color: #212121" id="menu" :class="headerFixed?'isFixed':''">
-          <el-menu style="border-bottom: none;" class="layout-nav" mode="horizontal" background-color="#212121" text-color="#fff" active-text-color="#ef6c00">
+        <div style="background-color: #212121; " id="menu" :class="headerFixed?'isFixed':''">
+          <el-menu style="border-bottom: none;" mode="horizontal" class="layout-nav" background-color="#212121" text-color="#fff" active-text-color="#ef6c00">
             <el-menu-item index="1" @click="toSection('about')"> About
             </el-menu-item>
             <el-menu-item index="2" @click="toSection('news')"> News
@@ -356,11 +356,11 @@ export default {
 }
 
 .layout-nav {
-  width: 415px;
+  width: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   margin: 0 auto;
-  /* padding: 0 42px; */
-  /* text-align: center; */
-  /* margin-right: 20px; */
+  text-align: center;
 }
 
 .layout-footer-center {
@@ -402,6 +402,6 @@ export default {
 }
 
 ul>li {
-  margin-bottom: 20px
+  margin-bottom: 20px;
 }
 </style>
