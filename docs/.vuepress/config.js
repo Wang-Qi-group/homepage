@@ -1,4 +1,4 @@
 module.exports = {
-  title: 'CryptoLab',
+  title: 'Crypto Lab',
   description: 'CryptoLab @ SUSTech.'
 }
