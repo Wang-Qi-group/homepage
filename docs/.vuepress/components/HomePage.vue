@@ -1,15 +1,17 @@
 <template>
 <div class="layout">
   <div :height="fullHeight + 'px'" class="header">
-    <div :style="{height:(fullHeight*0.85)+'px'}">
-      <div style="height: 70%; position: relative">
+    <div :style="{height:(fullHeight*0.6)+'px'}">
+      <div style="height: 100%; position: relative">
         <ring v-if="isMounted == true"></ring>
       </div>
-      <div style="height: 30%">
-        <div style="color: #fff; text-align: center; font-size: 4.8em">Crypto Lab</div>
-        <div style="color: #666; text-align: center; font-size: 2em">SUSTech</div>
-      </div>
     </div>
+
+    <div :style="{height:(fullHeight*0.26)+'px'}">
+      <div style="color: #fff; text-align: center; font-size: 4.3rem">Crypto Lab</div>
+      <div style="color: #666; text-align: center; font-size: 2rem">SUSTech</div>
+    </div>
+
     <el-row>
       <el-col class="hidden-sm-and-down">
         <div style="background-color: #212121; " id="menu" :class="headerFixed?'isFixed':''">
@@ -27,40 +29,39 @@
           </el-menu>
         </div>
       </el-col>
-
     </el-row>
 
     <div class="hidden-sm-and-down" v-if="headerFixed" style="height:60px"></div>
+
     <div class="hidden-md-and-up" style="height:60px"></div>
+
     <div :style="{height:(fullHeight*0.15 - 60)+'px'}"></div>
+
   </div>
 
   <div id="about" class="home-section">
     <el-row>
       <el-col :span="16" :offset="4">
-        <h2 style="font-size: 48px; text-align: center">About</h2>
+        <h2 class="section-title">About</h2>
       </el-col>
     </el-row>
-
     <el-row style="padding: 15px">
-      <el-col :lg="6" :xl="6">
+      <el-col :lg="4" :xl="4" :sm="2" :xs="2">
         <div>&nbsp</div>
       </el-col>
-
-      <el-col :lg="12" :sm="24" :xs="24">
-        I am Yi LIU, a Ph.D. student in HKU. My research interests include Applied Cryptography and Security, in particular, blockchain-based protocols and applications, privacy preserving, etc.
+      <el-col :lg="16" :xl="16" :sm="20" :xs="20">
+        Here is the introduction. 
       </el-col>
-      <el-col :lg="6" :xl="6">
+      <el-col :lg="4" :xl="4" :sm="2" :xs="2">
         <div>&nbsp</div>
       </el-col>
-
     </el-row>
   </div>
 
   <div id="news" class="home-section">
     <el-row>
       <el-col :span="16" :offset="4">
-        <h2 style="font-size: 48px; text-align: center">News</h2>
+        <h2 class="section-title">News</h2>
       </el-col>
     </el-row>
     <el-row>
@@ -113,7 +114,7 @@
   <div id="research" class="home-section">
     <el-row>
       <el-col :span="16" :offset="4">
-        <h2 style="font-size: 48px; text-align: center">Research</h2>
+        <h2 class="section-title">Research</h2>
       </el-col>
     </el-row>
 
@@ -154,7 +155,7 @@
   <div id="people" class="home-section">
     <el-row>
       <el-col :span="16" :offset="4">
-        <h2 style="font-size: 48px; text-align: center">People</h2>
+        <h2 class="section-title">People</h2>
       </el-col>
 
     </el-row>
@@ -225,7 +226,7 @@
   <div id="contact" class="home-section">
     <el-row>
       <el-col :span="16" :offset="4">
-        <h2 style="font-size: 48px; text-align: center">Contact</h2>
+        <h2 class="section-title">Contact</h2>
       </el-col>
     </el-row>
     <el-row :gutter="20">
@@ -244,12 +245,6 @@
     </el-row>
   </div>
 
-  <div id="About">
-
-  </div>
-  <div style="height: 1200px; ">
-
-  </div>
 
 
 </div>
@@ -259,8 +254,6 @@
 export default {
   data() {
     return {
-      isTop: true,
-      value2: 0,
       fullHeight: 0, // 屏幕高度
       isMounted: false,
       headerFixed: false
@@ -269,81 +262,80 @@ export default {
   watch: {
     fullHeight(val) {
       if (!this.timer) {
-        this.fullHeight = val
-        this.timer = true
-        let that = this
+        this.fullHeight = val;
+        this.timer = true;
+        let that = this;
         setTimeout(function() {
-          that.timer = false
-        }, 400)
+          that.timer = false;
+        }, 400);
       }
     }
   },
   mounted() {
-    const that = this
-    this.fullHeight = document.documentElement.clientHeight
+    this.fullHeight = document.documentElement.clientHeight;
     window.onresize = () => {
       return (() => {
-        window.fullHeight = document.documentElement.clientHeight
-        that.fullHeight = window.fullHeight
-      })()
-    }
-    this.isMounted = true
+        window.fullHeight = document.documentElement.clientHeight;
+        this.fullHeight = window.fullHeight;
+      })();
+    };
+    this.isMounted = true;
     // 监听dom渲染完成
     this.$nextTick(function() {
       // 这里fixedHeaderRoot是吸顶元素的ID
-      let header = document.getElementById("menu")
+      let header = document.getElementById("menu");
       // 这里要得到top的距离和元素自身的高度
-      this.offsetTop = header.offsetTop
-      this.offsetHeight = header.offsetHeight
-      // console.log("offsetTop:" + this.offsetTop + "," + this.offsetHeight);
+      this.offsetTop = header.offsetTop;
+      this.offsetHeight = header.offsetHeight;
     });
     // handleScroll为页面滚动的监听回调
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener("scroll", this.handleScroll);
   },
-  created() {
-
-  },
+  created() {},
   destroyed() {
-    window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener("scroll", this.handleScroll);
   },
   computed: {},
   methods: {
     toSection(id) {
       document.getElementById(id).scrollIntoView({
         behavior: "smooth"
-      })
-    },
-    changeStyle(status) {
-      this.isTop = !this.isTop
+      });
     },
     handleScroll() {
       // 得到页面滚动的距离
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
       // 判断页面滚动的距离是否大于吸顶元素的位置
 
-      let header = document.getElementById("menu")
+      let header = document.getElementById("menu");
       // 这里要得到top的距离和元素自身的高度
-      this.offsetTop = header.offsetTop
-
-
+      this.offsetTop = header.offsetTop;
 
       // this.headerFixed = scrollTop > (this.offsetTop);
       // console.log(scrollTop)
       // console.log('this' + this.fullHeight * 0.85)
-      this.headerFixed = scrollTop > this.fullHeight * 0.85 + 60
+      this.headerFixed = scrollTop > this.fullHeight * 0.85 + 60;
     },
     handlerClick(link) {
       if (/^http/.test(link)) {
-        window.open(link)
+        window.open(link);
       } else {
-        this.$router.push(link)
+        this.$router.push(link);
       }
-    },
+    }
   }
 };
 </script>
 
 <style scoped>
+.section-title {
+  font-size: 48px;
+  text-align: center;
+}
+
 .layout {
   /* border: 1px solid #d7dde4; */
   position: relative;
@@ -376,7 +368,7 @@ export default {
   z-index: 4;
 }
 
-.home-section:nth-of-type(2n+1) {
+.home-section:nth-of-type(2n + 1) {
   background-color: rgb(247, 247, 247);
 }
 
@@ -397,11 +389,11 @@ export default {
   background-color: #99bfb2;
 }
 
-.el-carousel__item:nth-child(2n+1) {
+.el-carousel__item:nth-child(2n + 1) {
   background-color: #b5d3c8;
 }
 
-ul>li {
+ul > li {
   margin-bottom: 20px;
 }
 </style>
