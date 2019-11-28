@@ -1,64 +1,78 @@
 <template>
 <div class="layout">
-  <div :height="fullHeight + 'px'" class="header">
-    <div :style="{height:(fullHeight*0.6)+'px'}">
-      <div style="height: 100%; position: relative">
-        <ring v-if="isMounted == true"></ring>
-      </div>
-    </div>
-
-    <div :style="{height:(fullHeight*0.26)+'px'}">
-      <div style="color: #fff; text-align: center; font-size: 4.3rem">Crypto Lab</div>
-      <div style="color: #666; text-align: center; font-size: 2rem">SUSTech</div>
-    </div>
-
-    <el-row>
-      <el-col class="hidden-sm-and-down">
-        <div style="background-color: #212121; " id="menu" :class="headerFixed?'isFixed':''">
-          <el-menu style="border-bottom: none;" mode="horizontal" class="layout-nav" background-color="#212121" text-color="#fff" active-text-color="#ef6c00">
-            <el-menu-item index="1" @click="toSection('about')"> About
-            </el-menu-item>
-            <el-menu-item index="2" @click="toSection('news')"> News
-            </el-menu-item>
-            <el-menu-item index="3" @click="toSection('research')"> Research
-            </el-menu-item>
-            <el-menu-item index="4" @click="toSection('people')"> People
-            </el-menu-item>
-            <el-menu-item index="5" @click="toSection('contact')"> Contact
-            </el-menu-item>
-          </el-menu>
+    <div :height="fullHeight + 'px'" class="header">
+        <div :style="{height:(fullHeight*0.6)+'px'}">
+            <div style="height: 100%; position: relative">
+                <ring v-if="isMounted == true"></ring>
+            </div>
         </div>
-      </el-col>
-    </el-row>
+        <div :style="{height:(fullHeight*0.26)+'px'}">
+            <div style="color: #fff; text-align: center; font-size: 4.3rem">Crypto Lab</div>
+            <div style="color: #666; text-align: center; font-size: 2rem">SUSTech</div>
+        </div>
+        <el-row>
+            <el-col class="hidden-sm-and-down">
+                <div style="background-color: #212121; " id="menu" :class="headerFixed?'isFixed':''">
+                    <el-menu style="border-bottom: none;" mode="horizontal" class="layout-nav" background-color="#212121" text-color="#fff" active-text-color="#ef6c00" :default-active="active">
+                        <el-menu-item index="1" @click="toSection('about')"> About
+                        </el-menu-item>
+                        <!-- <el-menu-item index="2" @click="toSection('news')"> News
+                        </el-menu-item> -->
+                        <el-menu-item index="2" @click="toSection('research')"> Research
+                        </el-menu-item>
+                        <el-menu-item index="3" @click="toSection('people')"> People
+                        </el-menu-item>
+                        <el-menu-item index="4" @click="toSection('contact')"> Contact
+                        </el-menu-item>
+                    </el-menu>
+                </div>
+            </el-col>
+        </el-row>
+        <div class="hidden-sm-and-down" v-if="headerFixed" style="height:60px"></div>
+        <div class="hidden-md-and-up" style="height:60px"></div>
+        <div :style="{height:(fullHeight*0.15 - 60)+'px'}"></div>
+    </div>
 
-    <div class="hidden-sm-and-down" v-if="headerFixed" style="height:60px"></div>
+    <div id="about" class="home-section">
+        <el-row>
+            <el-col :span="16" :offset="4">
+                <h2 class="section-title">About</h2>
+            </el-col>
+        </el-row>
+        <el-row style="padding-top: 20px" class="wow fadeInUpBig" data-wow-duration="1s">
+            <el-col :lg="4" :xl="4" :sm="2" :xs="2">
+                <div>&nbsp</div>
+            </el-col>
+            <el-col :span="7">
+                <el-card class="box-card" shadow="hover">
+                    <div style="font-size: 36px">Cryptography</div>
+                    <ul style="font-size: 18px">
+                        <li>Multi-Party Computation</li>
+                        <li>Zero-Knowledge</li>
+                        <li>Verifiable Computation</li>
+                    </ul>
+                </el-card>
+            </el-col>
+            <el-col :lg="2" :xl="2" :sm="2" :xs="2">
+                <div>&nbsp</div>
+            </el-col>
+            <el-col :span="7">
+                <el-card class="box-card" shadow="hover">
+                    <div style="font-size: 36px">Code and Deisgn</div>
+                    <ul style="font-size: 18px">
+                        <li>Error Correcting Code</li>
+                        <li>Combinatorial Design</li>
+                        <li>Sequence Design</li>
+                    </ul>
+                </el-card>
+            </el-col>
+            <el-col :lg="4" :xl="4" :sm="2" :xs="2">
+                <div>&nbsp</div>
+            </el-col>
+        </el-row>
+    </div>
 
-    <div class="hidden-md-and-up" style="height:60px"></div>
-
-    <div :style="{height:(fullHeight*0.15 - 60)+'px'}"></div>
-
-  </div>
-
-  <div id="about" class="home-section">
-    <el-row>
-      <el-col :span="16" :offset="4">
-        <h2 class="section-title">About</h2>
-      </el-col>
-    </el-row>
-    <el-row style="padding: 15px">
-      <el-col :lg="4" :xl="4" :sm="2" :xs="2">
-        <div>&nbsp</div>
-      </el-col>
-      <el-col :lg="16" :xl="16" :sm="20" :xs="20">
-        Here is the introduction. 
-      </el-col>
-      <el-col :lg="4" :xl="4" :sm="2" :xs="2">
-        <div>&nbsp</div>
-      </el-col>
-    </el-row>
-  </div>
-
-  <div id="news" class="home-section">
+  <!-- <div id="news" class="home-section">
     <el-row>
       <el-col :span="16" :offset="4">
         <h2 class="section-title">News</h2>
@@ -107,7 +121,7 @@
       </el-col>
 
     </el-row>
-  </div>
+  </div> -->
 
 
 
@@ -152,98 +166,148 @@
     </el-row>
   </div>
 
-  <div id="people" class="home-section">
-    <el-row>
-      <el-col :span="16" :offset="4">
-        <h2 class="section-title">People</h2>
-      </el-col>
+    <div id="people" class="home-section">
+        <el-row>
+            <el-col :span="16" :offset="4">
+                <h2 class="section-title">People</h2>
+            </el-col>
+        </el-row>
 
-    </el-row>
+        <el-row>
+            <el-col :lg="4" :xl="4" :sm="2" :xs="0">
+                <div>&nbsp</div>
+            </el-col>
+            <el-col :lg="16" :xl="16" :sm="24" :xs="24">
+                <el-card :body-style="{ padding: '0px' }" style="margin: 10px" shadow="hover">
+                    <el-row>
+                        <el-col :span="18">
+                            <div style="margin: 20px">
+                                <div style="text-align: center; font-size: 24px; padding-bottom: 16px">Prof. Qi Wang</div>
+                                <div>
+                                    Prof. Qi Wang received Ph.D. in Computer Science and Engineering in The Hong Kong University of Science and Technology in 2011. Before that, he received B.Eng. in Information Security in University of Science and Technology of China in 2007.
+                                    <ul>
+                                        <li>2014- , Southern University of Science and Technology, Assistant Professor</li>
+                                        <li>2013-2014 The Hong Kong University of Science and Technology, Research Associate </li>
+                                        <li>2011-2013 Otto-von-Guericke University Magdeburg, Alexander von Humboldt Fellow </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </el-col>
+                        <el-col :span="6">
+                            <div class="block" style="margin: 20px">
+                                <el-image src="http://static.cse.sustech.edu.cn/thumb.php?h=257&w=170&s=3&src=upload/images/20161208/ea1630db8c1b021e79de70438f9998ac.jpg">
+                                    <div slot="placeholder" class="image-slot">
+                                        加载中<span class="dot">...</span>
+                                    </div>
+                                </el-image>
+                            </div>
+                            <!-- <div style="margin: 20px">
+                                <img src="http://static.cse.sustech.edu.cn/thumb.php?h=257&w=170&s=3&src=upload/images/20161208/ea1630db8c1b021e79de70438f9998ac.jpg" class="image">
+                            </div> -->
+                        </el-col>
+                    </el-row>
+                </el-card>
+            </el-col>
+            <el-col :lg="4" :xl="4" :sm="2" :xs="0">
+                <div>&nbsp</div>
+            </el-col>
+        </el-row>
 
-    <el-row :gutter="0">
-      <el-col :lg="4" :sm="2" :xs="0">
-        <div>&nbsp</div>
-      </el-col>
-      <el-col :lg="4" :sm="24" :xs="24">
-        <el-card :body-style="{ padding: '0px' }" style="margin: 10px" shadow="hover">
-          <div style="text-align: center; margin: 10px">
-            <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
-          </div>
+        <el-row>
+            <el-col :lg="4" :xl="4" :sm="2" :xs="0">
+                <div>&nbsp</div>
+            </el-col>
+            <el-col :lg="8" :xl="8" :sm="24" :xs="24">
+                <el-card :body-style="{ padding: '0px' }" style="margin: 10px" shadow="hover">
+                    <div style="text-align: center; margin: 10px">
+                        <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+                    </div>
 
-          <div style="padding: 14px;">
-            <span>好吃的汉堡</span>
-            <div class="bottom clearfix">
-              <el-button type="text" class="button">操作按钮</el-button>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-      <el-col :lg="4" :sm="24" :xs="24">
-        <el-card :body-style="{ padding: '0px' }" style="margin: 10px" shadow="hover">
-          <div style="text-align: center; margin: 10px">
-            <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
-          </div>
+                    <div style="padding: 14px;">
+                        <span>好吃的汉堡</span>
+                        <div class="bottom clearfix">
+                            <el-button type="text" class="button">操作按钮</el-button>
+                        </div>
+                    </div>
+                </el-card>
+            </el-col>
+            <el-col :lg="8" :xl="8" :sm="24" :xs="24">
+                <el-card :body-style="{ padding: '0px' }" style="margin: 10px" shadow="hover">
+                    <div style="text-align: center; margin: 10px">
+                        <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+                    </div>
 
-          <div style="padding: 14px;">
-            <span>好吃的汉堡</span>
-            <div class="bottom clearfix">
-              <el-button type="text" class="button">操作按钮</el-button>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-      <el-col :lg="4" :sm="24" :xs="24">
-        <el-card :body-style="{ padding: '0px' }" style="margin: 10px" shadow="hover">
-          <div style="text-align: center; margin: 10px">
-            <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
-          </div>
+                    <div style="padding: 14px;">
+                        <span>好吃的汉堡</span>
+                        <div class="bottom clearfix">
+                            <el-button type="text" class="button">操作按钮</el-button>
+                        </div>
+                    </div>
+                </el-card>
+            </el-col>
+            <el-col :lg="4" :xl="4" :sm="2" :xs="0">
+                <div>&nbsp</div>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :lg="4" :xl="4" :sm="2" :xs="0">
+                <div>&nbsp</div>
+            </el-col>
+            <el-col :lg="8" :xl="8" :sm="24" :xs="24">
+                <el-card :body-style="{ padding: '0px' }" style="margin: 10px" shadow="hover">
+                    <div style="text-align: center; margin: 10px">
+                        <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+                    </div>
 
-          <div style="padding: 14px;">
-            <span>好吃的汉堡</span>
-            <div class="bottom clearfix">
-              <el-button type="text" class="button">操作按钮</el-button>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-      <el-col :lg="4" :sm="24" :xs="24">
-        <el-card :body-style="{ padding: '0px' }" style="margin: 10px" shadow="hover">
-          <div style="text-align: center; margin: 10px">
-            <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
-          </div>
+                    <div style="padding: 14px;">
+                        <span>好吃的汉堡</span>
+                        <div class="bottom clearfix">
+                            <el-button type="text" class="button">操作按钮</el-button>
+                        </div>
+                    </div>
+                </el-card>
+            </el-col>
+            <el-col :lg="8" :xl="8" :sm="24" :xs="24">
+                <el-card :body-style="{ padding: '0px' }" style="margin: 10px" shadow="hover">
+                    <div style="text-align: center; margin: 10px">
+                        <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
+                    </div>
 
-          <div style="padding: 14px;">
-            <span>好吃的汉堡</span>
-            <div class="bottom clearfix">
-              <el-button type="text" class="button">操作按钮</el-button>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-  </div>
+                    <div style="padding: 14px;">
+                        <span>好吃的汉堡</span>
+                        <div class="bottom clearfix">
+                            <el-button type="text" class="button">操作按钮</el-button>
+                        </div>
+                    </div>
+                </el-card>
+            </el-col>
+            <el-col :lg="4" :xl="4" :sm="2" :xs="0">
+                <div>&nbsp</div>
+            </el-col>
+        </el-row>
+    </div>
 
-  <div id="contact" class="home-section">
-    <el-row>
-      <el-col :span="16" :offset="4">
-        <h2 class="section-title">Contact</h2>
-      </el-col>
-    </el-row>
-    <el-row :gutter="20">
+    <div id="contact" class="home-section">
+        <el-row>
+            <el-col :span="16" :offset="4">
+                <h2 class="section-title">Contact</h2>
+            </el-col>
+        </el-row>
+        <el-row :gutter="20">
 
-      <el-col :span="8" :offset="4">
-        <div style="text-algin: center">
+            <el-col :span="8" :offset="4">
+                <div style="text-align: center">
 
-        </div>
-      </el-col>
-      <el-col :span="4">
-        <div style="text-algin: center">
+                </div>
+            </el-col>
+            <el-col :span="4">
+                <div style="text-align: center">
 
-        </div>
-      </el-col>
+                </div>
+            </el-col>
 
-    </el-row>
-  </div>
+        </el-row>
+    </div>
 
 
 
@@ -256,7 +320,9 @@ export default {
     return {
       fullHeight: 0, // 屏幕高度
       isMounted: false,
-      headerFixed: false
+      headerFixed: false,
+      active: "0"
+
     };
   },
   watch: {
@@ -272,6 +338,9 @@ export default {
     }
   },
   mounted() {
+    import('wowjs').then(WOW => {
+            new WOW.WOW().init()
+        })
     this.fullHeight = document.documentElement.clientHeight;
     window.onresize = () => {
       return (() => {
@@ -313,11 +382,27 @@ export default {
       let header = document.getElementById("menu");
       // 这里要得到top的距离和元素自身的高度
       this.offsetTop = header.offsetTop;
-
-      // this.headerFixed = scrollTop > (this.offsetTop);
-      // console.log(scrollTop)
-      // console.log('this' + this.fullHeight * 0.85)
       this.headerFixed = scrollTop > this.fullHeight * 0.85 + 60;
+
+      const navContents = document.querySelectorAll('.home-section')
+            // 所有锚点元素的 offsetTop
+            const offsetTopArr = []
+            navContents.forEach(item => {
+                offsetTopArr.push(item.offsetTop)
+            })
+            // // 获取当前文档流的 scrollTop
+            // const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+            // 定义当前点亮的导航下标
+            let navIndex = -1
+            for (let n = 0; n < offsetTopArr.length; n++) {
+                // 如果 scrollTop 大于等于第 n 个元素的 offsetTop 则说明 n-1 的内容已经完全不可见
+                // 那么此时导航索引就应该是 n 了
+                if (scrollTop >= offsetTopArr[n] - 40) {
+                    navIndex = n
+                }
+            }
+            // 把下标赋值给 vue 的 data
+            this.active = (navIndex + 1).toString()
     },
     handlerClick(link) {
       if (/^http/.test(link)) {

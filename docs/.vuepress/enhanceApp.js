@@ -3,6 +3,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
 import Ring from './components/Ring.vue'
 import 'element-ui/lib/theme-chalk/display.css'
+import 'animate.css'
 
 export default ({
   Vue, // VuePress 正在使用的 Vue 构造函数
