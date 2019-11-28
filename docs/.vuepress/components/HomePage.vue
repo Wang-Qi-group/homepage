@@ -311,16 +311,13 @@
 </template>
 
 <script>
-import {
-    WOW
-} from 'wowjs'
 export default {
     data() {
         return {
             fullHeight: 0, // 屏幕高度
             isMounted: false,
             headerFixed: false,
-            active: 0
+            active: "0"
         };
     },
     watch: {
@@ -336,8 +333,14 @@ export default {
         }
     },
     mounted() {
-        new WOW().init()
+        // import {
+        //     WOW
+        // } from 'wowjs'
+        let WOW = require('wowjs')
+        console.log(WOW)
+        new WOW.WOW().init()
         this.fullHeight = document.documentElement.clientHeight;
+
         window.onresize = () => {
             return (() => {
                 window.fullHeight = document.documentElement.clientHeight;
@@ -397,7 +400,7 @@ export default {
                 }
             }
             // 把下标赋值给 vue 的 data
-            this.active = navIndex + 1
+            this.active = (navIndex + 1).toString()
         },
         handlerClick(link) {
             if (/^http/.test(link)) {
