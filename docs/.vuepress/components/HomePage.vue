@@ -293,8 +293,11 @@
         </el-row>
         <el-row :gutter="20">
 
+<<<<<<< HEAD
+=======
             <el-col :span="8" :offset="4">
                 <div style="text-align: center">
+>>>>>>> c93dbf7becfac1e533836da09dd7df666437d124
 
                 </div>
             </el-col>
@@ -307,6 +310,7 @@
         </el-row>
     </div>
 
+>>>>>>> 05195fbab894087c6815e87aad42a40856e6217f
 </div>
 </template>
 
