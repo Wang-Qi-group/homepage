@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "animate.css": "^3.7.2"
-  },
-  "devDependencies": {
-    "wowjs": "^1.1.3"
-  }
-}
